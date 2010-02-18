@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>CSS.Features</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="index.css" media="screen" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../javascript/cssfeatures.js"></script>
+    <script type="text/javascript">
+    window.onload = function(){
+      CSS.init()
+      
+      var console = document.getElementById('console')
+      console.innerHTML = '&lt;body class="' + document.body.className + '"&gt;'
+      
+      var features = document.getElementById('features')
+      for (var feat in CSS.Features){
+        var li = document.createElement('li')
+        li.innerHTML = feat
+        li.className = CSS.Features[feat] ? 'works' : 'broken'
+        features.appendChild(li)
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <h1 id="h1">CSS.Features</h1>
+    <h2>Your Browser</h2>
+    <p id="userAgent"><script type="text/javascript">document.write(navigator.userAgent)</script></p>
+    <h2 id="h2">Feature Overview for Your Browser</h2>
+    <ul id="features"></ul>
+    <h2>Generated CSS Classes for Body</h2>
+    <p id="console"></p>
+  </body>
+</html>

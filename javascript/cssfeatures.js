@@ -1,5 +1,7 @@
 (function(){
     
+    
+    
     var Browser = (function(){
         var ua = navigator.userAgent;
         var isOpera = Object.prototype.toString.call(window.opera) == '[object Opera]'
@@ -9,6 +11,8 @@
         if (ua.indexOf('Gecko') > -1 && ua.indexOf('KHTML') === -1) return 'Moz'
         return null
       })()
+    
+    var IEVersion = Browser == 'IE' ? parseFloat(navigator.userAgent.match(/MSIE ([0-9]*\.[0-9]);/)[1]) : null
     
     function capitalize(str){
         return str.charAt(0).toUpperCase() + str.substring(1)
@@ -47,6 +51,17 @@
         return false
     }
     
+    function checkValue(prop, value){
+        var elm = document.createElement('div')
+        try{
+            elm.style[prop] = value
+            var res = getStyle(elm, prop)
+            return Boolean(res)
+        }catch(e){
+            return false
+        }
+    }
+    
     function checkColor(color){
         var elm = document.createElement('div')
         try{
@@ -80,7 +95,7 @@
             if (!features[feat])
                 classes.push('No' + feat)
             else
-                classes.push(feat)
+                classes.push('Has' + feat)
         }
         if (classes.length > 0)
             document.body.className = classes.join(' ')
@@ -108,10 +123,12 @@
             ColumnWidth: checkProp('columnWidth'),
             ColumnCount: checkProp('columnCount'),
             ColumnRule: checkProp('columnRule'),
-            WebKitGradient: checkWebKitGradient()
+            WebKitGradient: checkWebKitGradient(),
+            MinMaxHeightWidth: checkProp('minWidth'),
+            PositionFixed: Browser == 'IE' ? (IEVersion >= 7) : checkValue('position', 'fixed')
+            // TODO: Anyway to detect support for multiple backgrounds?
         }
     }
-    // TODO: Anyway to detect support for multiple backgrounds?
     var CSS = {
         init: function(){
             checkAllFeatures()

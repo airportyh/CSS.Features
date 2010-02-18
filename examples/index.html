@@ -27,6 +27,7 @@
     <style type="text/css">
     
     #myDiv{
+      padding: 0.5em;
       width: 5em;
       height: 2em;
       background-color: #ff0000;
@@ -40,6 +41,17 @@
       border: 1px outset #444;
     }
     
+    
+    #redTint{
+      padding: 0.5em;
+      width: 10em;
+      height: 4em;
+      
+      background-color: rgba(255, 0, 0, 0.2);
+    }
+    .NoRGBAColors #redTint{
+      background-color: #532820;
+    }
     </style>
   </head>
   <body>
@@ -109,9 +121,33 @@
         your hacks work but don't step on each other.
       </p>
       <h2>Example: RGBAColors</h2>
-      <p>If you want to create a semi-transparent background, 
-        
+      <p>All major browsers except IE now support RGBA colors. You can use RGBA colors to
+        create semi-transparent backgrounds, like so:    
       </p>
+      <p>
+      <pre class="code">
+#redTint{
+  background-color: rgba(253, 255, 2, 0.2);
+}</pre></p>
+      <p>This should give <span class="icode">redTint</span> a red tinted background.
+      </p>
+      <p>But browsers that do not support rgba colors ignore this rule,
+        and so will not have a different background color. But for this example, let's work
+        around the problem by giving them the color it would have been. To do this I
+        just screenshot the red-tinted portion of the page as rendered in Safari and
+        used the eyedropper tool to get the color. So I set that color for these browsers:</p>
+      <pre class="code">
+.NoRGBAColors #redTint{
+  background-color: #532820;
+}</pre>
+      <p>Here is our <span class="icode">redTint</span>:</p>
+      <div id="redTint">
+        redTint
+      </div>
+      <p>Obviously this isn't as nice. If I change the background color, then the color resulting
+        from the tinting will change also. Not to mention it won't show any content behind the
+        &lt;div&gt;. An alternative is to use a semi-transparent png.
+        But I'll leave that as an exercise for you.</p>
     </div>
   </body>
 </html>

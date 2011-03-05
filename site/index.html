@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>CSS.Features</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="index.css" media="screen" rel="stylesheet" type="text/css">
+    <!--<script type="text/javascript" src="../javascript/firebug-lite.js"></script>-->
+	<script type="text/javascript" src="../javascript/ecma5array.js"></script>
+    <script type="text/javascript" src="../javascript/cssfeatures.js"></script>
+    <script type="text/javascript" src="../javascript/jquery.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    
+
+  </head>
+  <body>
+    <div id="frame">
+      <div id="nav">
+        <ul>
+          <li class="here"><a href="index.html">Home</a></li>
+          <li><a href="examples.html">Examples</a></li>
+          <li><a href="browser_support.html">Browsers</a></li>
+          <li><a href="guidelines.html">Guidelines</a></li>
+        </ul>
+      </div>
+      <div id="content">
+      <h1 id="h1">CSS.Features</h1>
+      <div class="box">
+      <h2>What is it?</h2>
+      <p>You say Progressive Enhancement, I say Graceful Degradation. No matter which side you are on, writing CSS which takes advantage of the wonderful new 
+        CSS features but still work well with many different browsers can be a pain. 
+        CSS.Features is a small Javascript library that makes this easy.
+      </p>
+      </div>
+      <h2>Usage</h2>
+      <p>To use, just include the javascript 
+        file inside the &lt;head&gt; tag, like so: </p>
+      <pre>
+&lt;script type="text/javascript" src="cssfeatures.js"&gt;&lt;/script&gt;</pre>
+      <p>CSS.Features adds a number of 
+        CSS classes to the &lt;body&gt; tag - one for each Feature. For example, if said feature were called <code>NiftyFeature</code>,
+        then the <code>HasNiftyFeature</code> class would be added onto &lt;body&gt; if it's supported by your
+        browser. A list of features
+        that CSS.Features checks for is listed below.
+      </p>
+	  <h2>Your Browser</h2>
+	  <p><script type="text/javascript">document.write(navigator.userAgent)</script></p>
+	  <p id="browserDisplay"></p>
+      <h2 id="h2">Feature List</h2>
+	  <p>The features in green are the ones your browser supports. The ones 
+		in red are the ones it doesn't support.</p>
+      <div id="features_overview">
+        <div id="BoxShadowIntro" class="featureIntro">
+          <h3>BoxShadow</h3>
+          <p>The BoxShadow feature lets you add a drop shadow to an element.</p>
+          <p>Usage:</p>
+          <pre>
+-moz-box-shadow: 1px 2px 2px #222;
+-webkit-box-shadow: 1px 2px 2px #222;
+box-shadow: 1px 2px 2px #222;</pre>
+          <p>The first value is the horizontal offset; second value is the vertical offset;
+            the third is the size of the drop shadow; and the fourth is the color of the shadow.</p>
+        </div>
+        <div id="PNGTransparencyIntro" class="featureIntro">
+            <h3>PNGTransparency</h3>
+            <p>The PNGTransparency feature is had by a browser if it renders PNG alpha transparency correctly.</p>
+            <p>Usage:</p>
+            <pre>background: url(bg.png);</pre>
+        </div>
+        <div id="TextShadowIntro" class="featureIntro">
+          <h3>TextShadow</h3>
+          <p>The TextShadow feature lets you apply drop shadow to text.</p>
+          <p>Usage:</p>
+          <pre>
+-moz-text-shadow: 1px 2px 2px #222;
+-webkit-text-shadow: 1px 2px 2px #222;
+text-shadow: 1px 2px 2px #222;</pre>
+          <p>The first value is the horizontal offset; second value is the vertical offset;
+            the third is the size of the drop shadow; and the fourth is the color of the shadow.</p>
+        </div>
+        <div id="BorderRadiusIntro" class="featureIntro">
+            <h3>BorderRadius</h3>
+            <p>The BorderRadius features lets you apply rounded corners to an element.<code>border-radius</code> property adds rounded corners
+            to elements.</p>
+            <p>Usage:</p>
+            <pre>
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;</pre>
+          <p>
+            To specify the radius for each specific corner, use: </p>
+          <pre>
+-webkit-border-top-left-radius 
+-webkit-border-top-right-radius
+-webkit-border-bottom-left-radius
+-webkit-border-bottom-right-radius</pre>
+          <p>
+          for WebKit and</p>
+          <pre>
+-moz-border-radius-topleft
+-moz-border-radius-topright
+-moz-border-radius-bottomleft
+-moz-border-radius-bottomright</pre>
+            <p>
+            for Firefox.
+            </p>
+        </div>
+        <div id="BorderColorsIntro" class="featureIntro">
+          <h3>BorderColors</h3>
+          <p>The BorderColors feature lets you give a border multiple
+            bands of colors, with which you can do things like beveled edges. Currently, this is only supported in the latest version of Firefox. </p>
+            <p>Usage:</p>
+            <pre>
+border: 3px solid #000;
+-moz-border-top-colors: #303030 #353535 #434343;
+-moz-border-left-colors: #303030 #353535 #434343;
+-moz-border-right-colors: #303030 #353535 #434343;
+-moz-border-bottom-colors: #303030 #353535 #434343;
+border-top-colors: #303030 #353535 #434343;
+border-left-colors: #303030 #353535 #434343;
+border-right-colors: #303030 #353535 #434343;
+border-bottom-colors: #303030 #353535 #434343;</pre>
+            <p>
+              You must first specify the width of the border in a separate
+              <code>border</span> or <code>border-width</code> declaration. Then, you need to specify all
+              of the colors you want to use in succession for each side of the element. Each color specified takes up one pixel of the total thickness of the border.
+            </p>
+        </div>
+        <div id="BackgroundSizeIntro" class="featureIntro">
+            <h3>BackgroundSize</h3>
+            <p>The BackgroundSize feature lets you scale up or scale down a 
+              background image to the dimensions that you desire.</p>
+            <p>Usage:</p>
+            <pre>-webkit-background-size: 100px 100px;
+background-size: 100px 100px;</pre>
+            <p>The first value is the width; the second is the height.</p>
+        </div>
+        <div id="OpacityIntro" class="featureIntro">
+            <h3>Opacity</h3>
+            <p>The Opacity feature lets you change the alpha transparency
+              of an element.</p>
+            <p>Usage:</p>
+            <pre>opacity: 0.8;</pre>
+            <p>The value is between 0 and 1 inclusive.</p>
+        </div>
+        <div id="PositionFixedIntro" class="featureIntro">
+            <h3>PositionFixed</h3>
+            <p>The PositionFixed feature lets you fixed the position of an element
+                in your viewport independent of the page scroll offset.</p>
+            <p>Usage: </p>
+            <pre>position: fixed;
+bottom: 0px;
+right: 0px;</pre>
+            <p>The above example fixes the element to the bottom right corner
+                of the browser's viewport.</p>
+        </div>
+        <div id="RGBAColorsIntro" class="featureIntro">
+          <h3>RGBAColors</h3>
+          <p>The RGBAColors features lets you colors in RGBA space - that is RGB plus alpha transparency.</p>
+          <p>Usage:</p>
+          <pre>background-image: rgba(255, 255, 255, 0.4);
+color: rgba(0, 0, 0, 0.8);
+border-color: rgba(100, 100, 100, 1);</pre>
+        </div>
+        <div id="MinMaxHeightWidthIntro" class="featureIntro">
+            <h3>MinMaxHeightWidth</h3>
+            <p>The MinMaxHeightWidth feature lets you specify maximum or minimum values for the height or width of an element.</p>
+            <p>Usage:</p>
+            <pre>min-width: 500px;
+max-width: 960px;
+min-height: 460px;
+max-height: 860px;</pre>
+        </div>
+        <div id="TextOverflowIntro" class="featureIntro">
+          <h3>TextOverflow</h3>
+          <p>You can use the <code>text-overflow</code> property to
+            render the end of a string of text with an ellipsis ("...") right before 
+            it is clipped by the edge of its container.
+          </p>
+          <p>Usage:</p>
+          <pre>text-overflow: ellipsis;
+-o-text-overflow: ellipsis;</pre>
+          <p>Other possible values for <code>text-overflow</span> are <code>ellipsis-word</code> and <code>clip</code>.</p>
+        </div>
+        <div id="WordWrapIntro" class="featureIntro">
+            <h3>WordWrap</h3>
+            <p>The WordWrap features lets you control whether
+            a long word can be broken onto the next line if it extends beyond its
+            container's bounds. </p>
+            <p>Usage:</p>
+            <pre>word-wrap: break-word;</pre>
+            <p>Possible values are
+            <code>break-word</code> and 
+            <code>normal</code>.</p>
+        </div>
+        <div id="TransformIntro" class="featureIntro">
+            <h3>Transform</h3>
+            <p>The transform feature lets you rotate, scale, translate, and even
+                skew an element.</p>
+            <p>Usage:</p>
+            <pre>-webkit-transform: rotate(5deg) scale(-1) translate(5px, -10px) skewX(5);
+-moz-transform: rotate(5deg) scale(-1) translate(5px, -10px) skewX(5);</pre>
+            <p>Transform takes any number of functions as transformation steps.
+                The functions 
+                <code>scale</code>,
+                <code>scaleX</code>, and
+                <code>scaleY</code> take a number as argument. A negative number flips the element. The function <code>rotate</code>
+                function takes a degree as argument, in the format seen in the 
+                example above. The functions 
+                <code>translate</code>,
+                <code>translateX</code>, and
+                <code>translateY</code>
+                Take a length unit as argument.
+                The functions
+                <code>skew</code>,
+                <code>skewX</code>, and
+                <code>skewY</code>
+                take a degree as argument.
+            </p>
+        </div>
+        <div class="clearer"></div>
+      
+      
+      </div>
+      
+        <div class="clearer"></div>
+      <h2>CSS Classes added to &lt;body&gt;</h2>
+      <p id="console" class="code"></p>
+      </div>
+  </div>
+  </body>
+</html>

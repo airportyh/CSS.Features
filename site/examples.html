@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>CSS.Features - Examples</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="index.css" media="screen" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../javascript/cssfeatures.js"></script>
+    <script type="text/javascript" src="../javascript/jquery.js"></script>
+    <script type="text/javascript">
+      $(CSS.init)
+    </script>
+    <style type="text/css">
+    
+    #myDiv{
+      padding: 0.5em;
+      width: 5em;
+      height: 2em;
+      background-color: #ff0000;
+      
+      -webkit-box-shadow: 1px 2px 2px #222;
+      -moz-box-shadow: 1px 2px 2px #222;
+      box-shadow: 1px 2px 2px #222;
+    }
+
+    .NoBoxShadow #myDiv{
+      border: 1px outset #444;
+    }
+    
+    
+    #redTint{
+      padding: 0.5em;
+      width: 10em;
+      height: 4em;
+      
+      background-color: rgba(255, 0, 0, 0.2);
+    }
+    .NoRGBAColors #redTint{
+      background-color: #532820;
+    }
+    </style>
+  </head>
+  <body>
+    
+    <div id="frame">
+      <div id="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="here"><a href="examples.html">Examples</a></li>
+					<li><a href="browser_support.html">Browsers</a></li>
+        </ul>
+      </div>
+      <div id="content">
+        <h1>Examples</h1>
+      
+        <h2>Example 1: BoxShadow</h2>
+        <p>To add a drop shadow to a &lt;div&gt;, you would use the 
+          <span class="icode">box-shadow</span>
+          property, like so:
+        </p>
+        <pre>
+.HasBoxShadow #myDiv{
+  -webkit-box-shadow: 1px 2px 2px #222;
+  -moz-box-shadow: 1px 2px 2px #222;
+  box-shadow: 1px 2px 2px #222;
+}</pre>
+        <p>This applies the drop shadow to browsers that support BoxShadow. 
+					For the rest of the browsers, could draw a border for those
+          browsers instead.
+        </p>
+        <pre>
+#myDiv{
+  border: 1px outset #444;
+}</pre>
+				<p>But you don't want the borders to show up for the HasBoxShadow browsers,
+					so we'll add a rule to remove the border for them:</p>
+				<pre>
+.HasBoxShadow #myDiv{
+  -webkit-box-shadow: 1px 2px 2px #222;
+  -moz-box-shadow: 1px 2px 2px #222;
+  box-shadow: 1px 2px 2px #222;
+  border: 0px none;
+}</pre>
+        <p>Here is <span class="icode">myDiv</span>:</p>
+        <div id="myDiv">
+          myDiv
+        </div>
+        <p>That's it! No need to conjure up a multitude of convoluted hacks and test
+          over and over again on all the browsers you can get your hands on to make sure all of
+          your hacks work but don't step on each other.
+        </p>
+        <h2>Example 2: RGBAColors</h2>
+        <p>All major browsers except IE now support RGBA colors. You can use RGBA colors to
+          create semi-transparent backgrounds, like so:    
+        </p>
+        <pre class="code">
+.HasRGBAColors #redTint{
+  background-color: rgba(253, 0, 0, 0.2);
+}</pre>
+        <p>This should give <span class="icode">redTint</span> a red tinted background.
+        </p>
+        <p>But browsers that do not support rgba colors ignore this rule,
+          and so will not have a different background color. But for this example, let's work
+          around the problem by giving them the color it would have been. To do this I
+          just screenshot the red-tinted portion of the page as rendered in Safari and
+          used the eyedropper tool to get the color. So I set that color for these browsers:</p>
+        <pre class="code">
+#redTint{
+  background-color: #532820;
+}</pre>
+        <p>Here is our <span class="icode">redTint</span>:</p>
+        <div id="redTint">
+          redTint
+        </div>
+        <p>Obviously this isn't as nice. If I change the background color, then the color resulting
+          from the tinting will change also. Not to mention it won't show any content behind the
+          &lt;div&gt;. An alternative is to use a semi-transparent png.
+          But I'll leave that as an exercise for the reader.</p>
+      </div>
+      </div>
+    </div>
+  </body>
+</html>

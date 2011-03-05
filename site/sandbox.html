@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>CSS.Features - Sandbox</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="index.css" media="screen" rel="stylesheet" type="text/css">
+    <!--<script type="text/javascript" src="../javascript/firebug-lite.js"></script>-->
+    <script type="text/javascript" src="../javascript/cssfeatures.js"></script>
+    <script type="text/javascript" src="../javascript/jquery.js"></script>
+	<script type="text/javascript" src="../javascript/thinair.js"></script>
+    <script type="text/javascript" src="sandbox.js"></script>
+  </head>
+  <body>
+    <div id="frame">
+      <div id="nav">
+        <ul>
+         	<li><a href="index.html">Home</a></li>
+        	<li><a href="examples.html">Examples</a></li>
+			<li class="here"><a href="sandbox.html">Sandbox</a></li>
+        </ul>
+      </div>
+      <div id="content">
+			<h1>Sandbox</h1>
+			
+		      <div class="box">
+		      <h2>What is it?</h2>
+		      <p>You say Progressive Enhancement, I say Graceful Degradation. No matter which side you are on, writing CSS which takes advantage of the wonderful new 
+		        CSS features but still work well with many different browsers can be a pain. 
+		        CSS.Features is a small Javascript library that makes this easy.
+		      </p>
+		      </div>
+		      <h2>Usage</h2>
+		      <p>To use, you first include the javascript 
+		        file inside the &lt;head&gt; tag, like so: </p>
+		      <p class="code">
+		        &lt;script type="text/javascript" src="cssfeatures.js"&gt;&lt;/script&gt;
+		      </p>
+		      <p>Then, you need to call the CSS.init() function when the DOM is ready. For example:</p>
+		      <p class="code">
+		        window.onload = CSS.init;
+		      </p>
+		      <p>Or, with jQuery:</p>
+		      <p class="code">
+		        $(CSS.init);
+		      </p>
+		      <p>Once CSS.init() has been called, the &lt;body&gt; tag will have a number of 
+		        CSS classes added to it - one for each Feature. For example, if said feature were called <span class="icode">NiftyFeature</span>,
+		        then the <span class="icode">HasNiftyFeature</span> class would be added onto &lt;body&gt; if it's supported by your
+		        browser. If it's not supported by your browser, the class <span class="icode">NoNiftyFeature</span> would be added
+		        instead. A list of features
+		        that CSS.Features checks for is listed below.
+		      </p>
+	  </div>
+	
+	
+  </div>
+  </body>
+</html>

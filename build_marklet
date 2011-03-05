@@ -1,0 +1,3 @@
+echo 'javascript:(function(){' > marklet.js
+yui-compressor javascript/browser_emulator.js >> marklet.js
+echo 'browserEmulator();})()' >> marklet.js
